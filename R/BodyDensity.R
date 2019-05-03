@@ -1,0 +1,24 @@
+#' Dataset concerning the actual measurements of bone density in adolescents
+#'
+#' A detailed description of this dataset is available in \url{https://web.stanford.edu/~hastie/ElemStatLearn/datasets/bone.data} and discussed in Friedman et al. (2001) and Takeuchi et al. (2006).
+#'
+#' @format A data frame with 485 rows and 4 variables:
+#' \describe{
+#' \item{idnum}{ID of adolescent.}
+#' \item{age}{Age of adolescent.}
+#' \item{gender}{Gender of adolescent.}
+#' \item{spnbmd}{Relative Change in the actual measurements of bone density (BMD).}
+#' }
+#' @references{
+#'  Friedman, J., Hastie, T. and Tibshirani, R. (2001). \emph{The Elements of Statistical Learning: Data Mining, Inference, and Prediction}, Springer series in statistics New York, USA
+#'
+#'  Takeuchi, I., Le, Q. V., Sears, T. D., and Smola, A. J. (2006). Nonparametric quantile estimation, \emph{Journal of Machine Learning Research}, Vol 7, pp. 1231--1264.
+#'
+#'
+#' }
+#' @examples
+#' data(bone.data)
+#' y=bone.data$spnbmd
+#' x=bone.data$age
+#' plot(x,y)
+"bone.data"
