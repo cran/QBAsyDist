@@ -4,10 +4,12 @@
 \alias{mleAND}
 \title{Maximum likelihood estimation (MLE) for the quantile-based asymmetric normal distribution.}
 \usage{
-mleAND(y)
+mleAND(y, alpha = NULL)
 }
 \arguments{
 \item{y}{This is a vector of quantiles.}
+
+\item{alpha}{This is the index parameter  \eqn{\alpha}.}
 }
 \value{
 The maximum likelihood estimate of parameter \eqn{\theta=(\mu,\phi,\alpha)} of the quantile-based asymmetric normal distribution.
@@ -22,10 +24,11 @@ by using the maximum likelihood estimation are discussed in Gijbels et al. (2019
 # Maximum likelihood estimation
 y=rnorm(100)
 mleAND(y)
+mleAND(y,alpha=0.5)
 }
 }
 \references{
 {
- Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+ Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 }
 }

@@ -1,7 +1,7 @@
 Package: QBAsyDist
 Type: Package
 Title: Asymmetric Distributions and Quantile Estimation
-Version: 0.1.1
+Version: 0.1.2
 Author: Rezaul Karim <rezaul@juniv.edu>,
   Irène Gijbels <Irene.Gijbels@kuleuven.be>,
   Anneleen Verhasselt <anneleen.verhasselt@uhasselt.be >
@@ -13,9 +13,9 @@ Encoding: UTF-8
 LazyData: true
 Imports: ald (>= 1.2), zipfR (>= 0.6-10), GoFKernel (>= 2.1-1), Deriv
         (>= 3.8.5), nloptr (>= 1.2.1), quantreg (>= 5.38), locpol (>=
-        0.7-0)
+        0.7-0), scdensity (>= 1.0.2)
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-05-02 14:29:31 UTC; u0106215
+Packaged: 2019-09-03 14:45:21 UTC; u0106215
 Repository: CRAN
-Date/Publication: 2019-05-03 16:40:03 UTC
+Date/Publication: 2019-09-03 19:00:02 UTC

@@ -16,7 +16,7 @@
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -94,7 +94,7 @@ rATD<-function(n,mu,phi,alpha,nu){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -192,7 +192,7 @@ momentATD<-function(phi,alpha,nu,r){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -278,7 +278,7 @@ momATD<-function(y,alpha=NULL){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -309,7 +309,7 @@ LogLikATD<- function(y,mu,phi,alpha,nu){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'

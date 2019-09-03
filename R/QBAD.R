@@ -13,7 +13,7 @@
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -138,7 +138,7 @@ rQBAD<-function(n,mu,phi,alpha,F,QF=NULL){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -168,7 +168,7 @@ LogLikQBAD<- function(y,mu,phi,alpha,f){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -285,7 +285,7 @@ momentQBAD<- function(phi,alpha,f,r){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -422,7 +422,8 @@ momQBAD<-function(y,f,alpha=NULL){
 #' by using the maximum likelihood estimation are discussed in Section 3.2 of Gijbels et al. (2019a).
 #' @param y This is a vector of quantiles.
 #' @param f This is the reference density function \eqn{f} which is a standard version of a unimodal and symmetric around 0 density.
-
+#' @param alpha This is the index parameter  \eqn{\alpha}.
+#'
 #' @return The maximum likehood estimate of paramter \eqn{\theta=(\mu,\phi,\alpha)} of the quantile-based asymmetric family of densities
 #'
 #' @import ald
@@ -430,7 +431,7 @@ momQBAD<-function(y,f,alpha=NULL){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -443,13 +444,15 @@ NULL
 #' f_N<-function(s){dnorm(s, mean = 0,sd = 1)} # density function of N(0,1)
 #' rnum=rnorm(100)
 #' mleQBAD(rnum,f=f_N)
-#'
+#' mleQBAD(rnum,f=f_N,alpha=.5)
 #'
 #' # Example 2: Let F be a standard Laplace cumulative distribution function then
 #' f_La<-function(s){0.5*exp(-abs(s))} # density function of Laplace(0,1)
 #' mleQBAD(rnum,f=f_La)
+#' mleQBAD(rnum,f=f_La,alpha=.5)
 #' @export
- mleQBAD<-function(y,f){
+ mleQBAD<-function(y,f,alpha=NULL){
+   if (is.null(alpha)){
 theta0<-ald::mleALD(y, initial = NA)$par
 fn <- function(theta){
   mu=theta[1]
@@ -459,6 +462,18 @@ fn <- function(theta){
   return(-sum(LL[!is.infinite(LL)]))}
 Est.par=nloptr::bobyqa(x0=theta0,fn = fn ,lower = c(min(y),00.001,0.001), upper = c(max(y),Inf,1))$par
 estimated.LL<-LogLikQBAD(y=y,mu=Est.par[1],phi=Est.par[2],alpha=Est.par[3],f)
-list(mu.MLE=Est.par[1], phi.MLE=Est.par[2],alpha.MLE=Est.par[3],LogLikelihood=estimated.LL)}
+list(mu.MLE=Est.par[1], phi.MLE=Est.par[2],alpha.MLE=Est.par[3],LogLikelihood=estimated.LL)
+ } else {
+   theta0<-c(median(y),sd(y),alpha)
+   fn <- function(theta){
+     mu=theta[1]
+     phi=theta[2]
+     alpha=alpha
+     LL<-log(dQBAD(y,mu,phi,alpha,f))
+     return(-sum(LL[!is.infinite(LL)]))}
+   Est.par=nloptr::bobyqa(x0=theta0,fn = fn ,lower = c(min(y),00.001,alpha), upper = c(max(y),Inf,alpha))$par
+   estimated.LL<-LogLikQBAD(y=y,mu=Est.par[1],phi=Est.par[2],alpha=alpha,f)
+   list(mu.MLE=Est.par[1], phi.MLE=Est.par[2],alpha.MLE=Est.par[3],LogLikelihood=estimated.LL)}
+ }
 
 

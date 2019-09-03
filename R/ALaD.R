@@ -12,7 +12,7 @@
 #' The length of the result is determined by \eqn{n} for \code{\link{rALaD}}, and is the maximum of the lengths of the numerical arguments for the other functions.
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #'
 #'
 #'  Yu., K, and Zhang, J. (2005). A three-parameter asymmetric Laplace distribution and its extension. \emph{Communications in Statistics–Theory and Methods}, \bold{34}(9-10), 1867–1879.
@@ -76,7 +76,7 @@ rALaD<-function(n,mu,phi,alpha){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @name momentALaD
@@ -141,7 +141,7 @@ momentALaD<- function(phi,alpha,r){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @name momALaD
@@ -265,7 +265,7 @@ momALaD<-function(y,alpha=NULL){
 #' @param alpha This is the index parameter  \eqn{\alpha}.
 #' @return \code{\link{LogLikALaD}} provides the value of the Log-likelihood function of the quantile-based asymmetric Laplace distribution.
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @examples
@@ -293,7 +293,7 @@ LogLikALaD<- function(y,mu,phi,alpha){
 #' @import ald
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #'
 #'
 #'  Koenker, R. (2005). \emph{Quantile Regression}. Cambridge University Press.

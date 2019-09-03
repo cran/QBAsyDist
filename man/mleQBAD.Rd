@@ -4,12 +4,14 @@
 \alias{mleQBAD}
 \title{Maximum likelihood estimation (MLE) for the quantile-based asymmetric family of distributions.}
 \usage{
-mleQBAD(y, f)
+mleQBAD(y, f, alpha = NULL)
 }
 \arguments{
 \item{y}{This is a vector of quantiles.}
 
 \item{f}{This is the reference density function \eqn{f} which is a standard version of a unimodal and symmetric around 0 density.}
+
+\item{alpha}{This is the index parameter  \eqn{\alpha}.}
 }
 \value{
 The maximum likehood estimate of paramter \eqn{\theta=(\mu,\phi,\alpha)} of the quantile-based asymmetric family of densities
@@ -24,14 +26,15 @@ by using the maximum likelihood estimation are discussed in Section 3.2 of Gijbe
 f_N<-function(s){dnorm(s, mean = 0,sd = 1)} # density function of N(0,1)
 rnum=rnorm(100)
 mleQBAD(rnum,f=f_N)
-
+mleQBAD(rnum,f=f_N,alpha=.5)
 
 # Example 2: Let F be a standard Laplace cumulative distribution function then
 f_La<-function(s){0.5*exp(-abs(s))} # density function of Laplace(0,1)
 mleQBAD(rnum,f=f_La)
+mleQBAD(rnum,f=f_La,alpha=.5)
 }
 \references{
 {
- Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+ Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 }
 }

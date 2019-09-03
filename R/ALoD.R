@@ -13,7 +13,7 @@
 #' The length of the result is determined by \eqn{n} for \code{\link{rALoD}}, and is the maximum of the lengths of the numerical arguments for the other functions.
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @name ALoD
@@ -82,7 +82,7 @@ rALoD<-function(n,mu,phi,alpha){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -155,7 +155,7 @@ momentALoD<-function(phi,alpha,r){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -288,7 +288,7 @@ momALoD<-function(y,alpha=NULL){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @examples
@@ -313,7 +313,7 @@ LogLikALoD<- function(y,mu,phi,alpha){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'

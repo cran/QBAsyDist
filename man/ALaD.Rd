@@ -56,7 +56,7 @@ rALaD(n=100,mu=0,phi=1,alpha=.5)
 }
 \references{
 {
- Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+ Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 
 
  Yu., K, and Zhang, J. (2005). A three-parameter asymmetric Laplace distribution and its extension. \emph{Communications in Statistics–Theory and Methods}, \bold{34}(9-10), 1867–1879.

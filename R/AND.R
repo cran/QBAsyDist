@@ -12,7 +12,7 @@
 #' @return \code{\link{dAND}} provides the density, \code{\link{pAND}} provides the cumulative distribution function, \code{\link{qAND}} provides the quantile function, and \code{\link{rAND}} generates a random sample from the quantile-based asymmetric normal distribution.
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -86,7 +86,7 @@ rAND<-function(n,mu,phi,alpha){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @name momentAND
@@ -153,7 +153,7 @@ momentAND<-function(phi,alpha,r){
 #'
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -276,7 +276,7 @@ momAND<-function(y,alpha=NULL){
 #' @return \code{\link{LogLikAND}} provides the value of the Log-likelihood function of the quantile-based asymmetric normal distribution.
 #'
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #' @examples
@@ -299,11 +299,12 @@ LogLikAND<- function(y,mu,phi,alpha){
 #' and parameter estimation of \eqn{ \theta=(\mu,\phi,\alpha)} in the asymmetric normal distribution
 #' by using the maximum likelihood estimation are discussed in Gijbels et al. (2019a).
 #' @param y This is a vector of quantiles.
+#' @param alpha This is the index parameter  \eqn{\alpha}.
 #' @return The maximum likelihood estimate of parameter \eqn{\theta=(\mu,\phi,\alpha)} of the quantile-based asymmetric normal distribution.
 #' @import zipfR
 #' @import ald
 #' @references{
-#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, to appear.
+#'  Gijbels, I., Karim, R. and Verhasselt, A. (2019a). On quantile-based asymmetric family of distributions: properties and inference. \emph{International Statistical Review}, \url{https://doi.org/10.1111/insr.12324}.
 #' }
 #'
 #'
@@ -316,126 +317,11 @@ NULL
 #' # Maximum likelihood estimation
 #' y=rnorm(100)
 #' mleAND(y)
+#' mleAND(y,alpha=0.5)
 #' }
 #' @export
-mleAND<-function(y){
-  n<-length(y)
-  y_ord<-sort(y)
-  n<-length(y)
-  y_mu=matrix(NA,n,1);
-  y_muL=matrix(NA,n,1);
-  y_muR=matrix(NA,n,1);
-  sy1=matrix(NA,n,1);
-  sy2=matrix(NA,n,1);
-  pfyy=matrix(NA,n,1);
-  LLikelihood<-array(NA,dim=c(n,6))
-
-  for (j in 2: (n-1)){
-    alpha_0<-j/n
-    mu_0<-y_ord[j];
-
-    sigma2_0j<-((1-alpha_0)^2/n)*sum((y_ord[1:(j-1)]-mu_0)^2)+(alpha_0^2/n)*sum((y_ord[j:n]-mu_0)^2)
-
-    phi_0<-sqrt(sigma2_0j)
-
-    mu_ij<-mu_0
-    alpha_ij<-alpha_0
-    phi_ij<-phi_0
-
-
-    alpha_ij_new<-alpha_ij
-    phi_ij_new<-phi_ij
-    mu_ij_new<-mu_ij
-    ######Repeataion
-
-    repeat {
-
-      ### mu_ij estimation
-      m=j;
-      g_Minus_mu<-((1-alpha_ij)^2/phi_ij^2)*sum(y_ord[1:(j-1)]-mu_ij)+(alpha_ij^2/phi_ij^2)*sum(y_ord[j:n]-mu_ij)
-
-      if (g_Minus_mu <0){
-        mu_ij<-((1-alpha_ij)^2*(m-1)*mean(y_ord[1:(m-1)])+alpha_ij^2*(n-m+1)*mean(y_ord[m:n]))/((1-alpha_ij)^2*(m-1)+alpha_ij^2*(n-m+1))
-      }
-      else
-      {
-        mu_ij<-y_ord[j]
-      }
-
-      ### phi_ij estimation
-      for (i in 1:n)
-      {
-        if (y[i] >mu_ij)
-        {
-          y_mu[i,1]<-alpha_ij^2*(y[i]-mu_ij)^2
-        }
-        else
-        {
-          y_mu[i,1]<-(1-alpha_ij)^2*(y[i]-mu_ij)^2
-
-        }
-      }
-      phi_ij<-sqrt(sum(y_mu)/n)
-
-
-      ### alpha_ij estimation
-      sum2devL<-array(0,dim=c(n,1))
-      sum2devR<-array(0,dim=c(n,1))
-      for (ii in 1:n){
-        if (y_ord[ii] <=mu_ij ){
-          sum2devL[ii]<-(y_ord[ii]-mu_ij)^2
-        } else {
-          sum2devR[ii]<-(y_ord[ii]-mu_ij)^2}
-      }
-      sum2devL_cons<-sum(sum2devL)/phi_ij^2
-      sum2devR_cons<-sum(sum2devR)/phi_ij^2
-      fun <- function (x) {n/x-n/(1-x)+(1-x)*sum2devL_cons-x*sum2devR_cons}
-      alpha_ij<-uniroot(fun, c(0, 1))$root
-
-      if (abs(alpha_ij_new-alpha_ij)<0.001 & abs(mu_ij_new-mu_ij)<0.001 & abs(phi_ij_new-phi_ij)<0.001) break
-
-
-      alpha_ij_new<-alpha_ij
-      phi_ij_new<-phi_ij
-      mu_ij_new<-mu_ij
-
-    }
-
-    #### likelihood function
-    for (i in 1:n)
-
-    {
-      con=2*alpha_ij*(1-alpha_ij)/phi_ij;
-      if (y[i] >mu_ij)
-      {
-        sy1[i,1]<-alpha_ij*(y[i]-mu_ij)/phi_ij
-        pfyy[i,1]<-con*dnorm(sy1[i,1],0,1);
-
-      }
-      else
-      {
-        sy2[i,1]<-(1-alpha_ij)*(y[i]-mu_ij)/phi_ij
-        pfyy[i,1]<-con*dnorm(sy2[i,1],0,1);
-
-      }
-    }
-    #plot(y,pfyy)
-
-    LLikelihood[j,1]=sum(log(pfyy))
-    LLikelihood[j,2]=mu_ij
-    LLikelihood[j,3]=phi_ij
-    LLikelihood[j,4]=alpha_ij
-    LLikelihood[j,5]=j
-    LLikelihood[j,6]=g_Minus_mu
-  }
-  parameter<-LLikelihood[2:(n-1),]
-  parameter
-  estimated.LL<-parameter[parameter[,1]== max( parameter[,1]), ][1]
-  estimated.mu<-parameter[parameter[,1]== max( parameter[,1]), ][2]
-  estimated.phi<-parameter[parameter[,1]== max( parameter[,1]), ][3];
-  estimated.alpha<-parameter[parameter[,1]== max( parameter[,1]), ][4];
-
-  return(list(LogLikelihood.AND=round(estimated.LL,4),mu.AND=round(estimated.mu,4),phi.AND=round(estimated.phi,4),alpha.AND=round(estimated.alpha,4)))
-}
+mleAND<-function(y,alpha=NULL){
+  f_N<-function(s){dnorm(s, mean = 0,sd = 1)} # density function of N(0,1)
+ return(mleQBAD(y,f=f_N,alpha))}
 
 
